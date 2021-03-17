@@ -8,11 +8,12 @@ namespace HomeworkLesson17
         static void Main(string[] args)
         {
             FirstTask();
+            SecondTask();
         }
 
         static void FirstTask()
         {
-            Console.Write("Enter a word: ");
+            Console.Write("Введите слово, а мы все строчные гласные заменим цифрами: ");
             var word = Console.ReadLine();
             var newWord = word
                 .ToCharArray()
@@ -24,6 +25,23 @@ namespace HomeworkLesson17
             foreach (var x in newWord)
             {
                 Console.Write(x);
+            }
+        }
+
+        static void SecondTask()
+        {
+            Console.Write("Введите слово, а мы все цифры заменим гласными: ");
+            var word = Console.ReadLine();
+            var newWord = word
+                .ToCharArray()
+                .Select(ch => ch == '1' ? 'a' : ch)
+                .Select(ch => ch == '2' ? 'e' : ch)
+                .Select(ch => ch == '3' ? 'i' : ch)
+                .Select(ch => ch == '4' ? 'o' : ch)
+                .Select(ch => ch == '5' ? 'u' : ch);
+            foreach (var ch in newWord)
+            {
+                Console.Write(ch);
             }
         }
     }
