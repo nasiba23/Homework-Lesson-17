@@ -7,16 +7,16 @@ namespace HomeworkLesson17
     {
         static void Main(string[] args)
         {
-            FirstTask();
-            SecondTask();
+            // FirstTask();
+            // SecondTask();
+            ThirdTask();
         }
 
         static void FirstTask()
         {
-            Console.Write("Введите слово, а мы все строчные гласные заменим цифрами: ");
+            Console.Write("Enter a word: ");
             var word = Console.ReadLine();
             var newWord = word
-                .ToCharArray()
                 .Select(ch => ch == 'a' ? '1' : ch)
                 .Select(ch => ch == 'e' ? '2' : ch)
                 .Select(ch => ch == 'i' ? '3' : ch)
@@ -30,10 +30,9 @@ namespace HomeworkLesson17
 
         static void SecondTask()
         {
-            Console.Write("Введите слово, а мы все цифры заменим гласными: ");
+            Console.Write("Enter a number: ");
             var word = Console.ReadLine();
             var newWord = word
-                .ToCharArray()
                 .Select(ch => ch == '1' ? 'a' : ch)
                 .Select(ch => ch == '2' ? 'e' : ch)
                 .Select(ch => ch == '3' ? 'i' : ch)
@@ -43,6 +42,27 @@ namespace HomeworkLesson17
             {
                 Console.Write(ch);
             }
+        }
+
+        static void ThirdTask()
+        {
+            var word = "gdfgdf234dg54gf*23oP42";
+
+            var symbol = word
+                .FirstOrDefault(char.IsPunctuation);
+
+            var operation = new string(word
+                .Where(ch => char.IsDigit(ch) || char.IsPunctuation(ch)).ToArray()).Split(symbol);
+
+            var result = symbol switch
+            {
+                '+' => double.Parse(operation[0]) + double.Parse(operation[1]),
+                '-' => double.Parse(operation[0]) - double.Parse(operation[1]),
+                '*' => double.Parse(operation[0]) * double.Parse(operation[1]),
+                '/' => double.Parse(operation[0]) / double.Parse(operation[1]),
+                _ => 0,
+            };
+            Console.WriteLine(Math.Round(result).ToString());
         }
     }
 }
