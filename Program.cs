@@ -7,9 +7,10 @@ namespace HomeworkLesson17
     {
         static void Main(string[] args)
         {
-            // FirstTask();
-            // SecondTask();
+            FirstTask();
+            SecondTask();
             ThirdTask();
+            FourthTask();
         }
 
         static void FirstTask()
@@ -63,6 +64,13 @@ namespace HomeworkLesson17
                 _ => 0,
             };
             Console.WriteLine(Math.Round(result).ToString());
+        }
+
+        static void FourthTask()
+        {
+            var word = "camelCasing";
+            var result = word.Select(ch => Char.IsUpper(ch) ? " " + ch : ch.ToString()).Aggregate((a, b) => a + b);
+            Console.WriteLine(result);
         }
     }
 }
